@@ -8,15 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="users")
  */
-class User
+class User extends AbstractEntity
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue
-     */
-    protected int $id;
-
     /**
      * @ORM\Column(type="integer", name="role_id")
      */
@@ -32,11 +25,13 @@ class User
      */
     protected string $password;
 
-    /* @ORM\Column(type="string", length=1024)
+    /**
+     * @ORM\Column(type="string", length=1024)
      */
     protected string $name;
 
-    /* @ORM\Column(type="string", length=1024)
+    /**
+     * @ORM\Column(type="string", length=1024)
      */
     protected string $email;
 
@@ -44,11 +39,6 @@ class User
      * @ORM\Column(type="datetime_immutable")
      */
     protected string $created;
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
 
     public function getRoleId(): int
     {
