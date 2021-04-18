@@ -2,7 +2,7 @@
 
 namespace App\Core\Routing;
 
-use App\Core\Request\SymfonyRequest;
+use App\Data\Request\SymfonyRequest;
 
 class RouterFactory
 {

@@ -4,7 +4,7 @@ namespace App\Core\Routing;
 
 use App\Core\Exceptions\ControllerNotFoundException;
 use App\Core\Exceptions\RouteNotFoundException;
-use App\Core\Request\RequestInterface;
+use App\Data\Request\RequestInterface;
 use App\Presentation\Controllers\ControllerFactory;
 use ReflectionException;
 
