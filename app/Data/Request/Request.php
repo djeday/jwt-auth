@@ -2,15 +2,15 @@
 
 namespace App\Data\Request;
 
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
-class SymfonyRequest implements RequestInterface
+class Request implements RequestInterface
 {
-    private Request $request;
+    private SymfonyRequest $request;
 
-    public function __construct()
+    public function __construct(SymfonyRequest $request)
     {
-        $this->request = Request::createFromGlobals();
+        $this->request = $request;
     }
 
     public function getHost(): string {
@@ -22,6 +22,11 @@ class SymfonyRequest implements RequestInterface
     }
 
     public function get(string $key): ?string
+    {
+        return $this->request->query->get($key);
+    }
+
+    public function post(string $key): ?string
     {
         return $this->request->query->get($key);
     }

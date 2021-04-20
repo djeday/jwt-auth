@@ -2,14 +2,14 @@
 
 namespace App\Core\Routing;
 
-use App\Data\Request\SymfonyRequest;
+use App\Data\Request\Request;
+use App\Data\Request\RequestFactory;
 
 class RouterFactory
 {
     public static function create(): Router
     {
-        return new Router(
-            new SymfonyRequest()
-        );
+        $request = RequestFactory::create();
+        return new Router($request);
     }
 }
