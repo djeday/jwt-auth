@@ -2,10 +2,12 @@
 
 namespace App\Data\Request;
 
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
+
 class RequestFactory
 {
-    public static function create(): SymfonyRequest
+    public static function create(): RequestInterface
     {
-        return new SymfonyRequest();
+        return new Request(SymfonyRequest::createFromGlobals());
     }
 }

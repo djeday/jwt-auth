@@ -8,7 +8,6 @@ use App\Data\Request\RequestInterface;
 use App\Presentation\Controllers\ControllerFactory;
 use ReflectionException;
 
-
 class Router
 {
     private array $routes = [];
