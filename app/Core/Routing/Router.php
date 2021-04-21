@@ -2,11 +2,9 @@
 
 namespace App\Core\Routing;
 
-use App\Core\Exceptions\ControllerNotFoundException;
 use App\Core\Exceptions\RouteNotFoundException;
 use App\Data\Request\RequestInterface;
 use App\Presentation\Controllers\ControllerFactory;
-use ReflectionException;
 
 class Router
 {
@@ -36,14 +34,14 @@ class Router
     }
 
     /**
-     * @throws ControllerNotFoundException
-     * @throws RouteNotFoundException
-     * @throws ReflectionException
+     * @throws \App\Core\Exceptions\ControllerNotFoundException
+     * @throws \App\Core\Exceptions\RouteNotFoundException
+     * @throws \ReflectionException
      */
     public function run(): void
     {
         $routeInfo = $this->match();
-        if ($routeInfo != null) {
+        if (!empty($routeInfo)) {
             $controller = ControllerFactory::create($routeInfo->getController());
             $action = $routeInfo->getAction();
             $args = $routeInfo->getParams();

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Repository;
+namespace App\Domain\Storage;
 
-use App\Core\Entity\AbstractEntity;
+use App\Data\Database\Entity\AbstractEntity;
 
 interface RepositoryInterface
 {
