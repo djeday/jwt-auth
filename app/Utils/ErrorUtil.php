@@ -3,6 +3,7 @@
 namespace App\Utils;
 
 use Throwable;
+use ErrorException;
 
 class ErrorUtil
 {
@@ -16,8 +17,11 @@ class ErrorUtil
         }
     }
 
+    /**
+     * @throws ErrorException
+     */
     public static function errorHandler($errNo, $errStr, $errFile, $errLine)
     {
-        throw new \ErrorException($errStr, 0, $errNo, $errFile, $errLine);
+        throw new ErrorException($errStr, 0, $errNo, $errFile, $errLine);
     }
 }

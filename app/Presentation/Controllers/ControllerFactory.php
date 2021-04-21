@@ -4,7 +4,10 @@ namespace App\Presentation\Controllers;
 
 use App\Core\Config\ConfigurationFactory;
 use App\Core\Exceptions\ControllerNotFoundException;
-use App\Presentation\Views\ViewFactory;
+use App\Data\Database\DoctrineManager;
+use App\Data\Repository\UserRepository;
+use App\Data\Request\RequestFactory;
+use App\Data\Response\ResponseFactory;
 use ReflectionClass;
 use ReflectionException;
 
@@ -12,8 +15,9 @@ class ControllerFactory
 {
     /**
      * @param string $class
-     * @return AbstractController
-     * @throws ReflectionException | ControllerNotFoundException
+     * @return \App\Presentation\Controllers\AbstractController
+     * @throws \App\Core\Exceptions\ControllerNotFoundException
+     * @throws ReflectionException
      */
     public static function create(string $class): AbstractController
     {
@@ -21,8 +25,30 @@ class ControllerFactory
             throw new ControllerNotFoundException("Controller $class not found!", 404);
         }
         $className = (new ReflectionClass($class))->getShortName();
-        return match ($className) {
-            default => null,
-        };
+        $controller = 'create' . $className;
+
+        return self::$controller();
+    }
+
+    /**
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\DBAL\Exception
+     */
+    public static function createUserController(): AbstractUserController
+    {
+        $request = RequestFactory::create();
+        $response = ResponseFactory::create();
+        $configurationRepository = ConfigurationFactory::create();
+        $globalConfiguration = $configurationRepository->getConfiguration();
+
+        $entityManager = DoctrineManager::create(
+            $globalConfiguration->getDbHost(),
+            $globalConfiguration->getDbName(),
+            $globalConfiguration->getDbUser(),
+            $globalConfiguration->getDbPass()
+        );
+        $userRepository = new UserRepository($entityManager);
+
+        return new UserController($request, $response, $userRepository);
     }
 }

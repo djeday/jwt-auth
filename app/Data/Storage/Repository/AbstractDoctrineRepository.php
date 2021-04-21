@@ -2,8 +2,8 @@
 
 namespace App\Data\Storage\Repository;
 
-use App\Core\Entity\AbstractEntity;
-use App\Domain\Repository\RepositoryInterface;
+use App\Data\Database\Entity\AbstractEntity;
+use App\Domain\Storage\RepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 abstract class AbstractDoctrineRepository implements RepositoryInterface
