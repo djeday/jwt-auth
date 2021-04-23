@@ -4,20 +4,20 @@ namespace App\Core\Entity\User;
 
 class UserCredentials
 {
-    private string $email;
+    private ?string $email;
 
-    private string $login;
+    private ?string $login;
 
-    private string $password;
+    private ?string $password;
 
-    private string $name;
+    private ?string $name;
 
     public function getEmail(): string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): void
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
     }
@@ -27,7 +27,7 @@ class UserCredentials
         return $this->login;
     }
 
-    public function setLogin(string $login): void
+    public function setLogin(?string $login): void
     {
         $this->login = $login;
     }
@@ -37,7 +37,7 @@ class UserCredentials
         return $this->password;
     }
 
-    public function setPassword(string $password): void
+    public function setPassword(?string $password): void
     {
         $this->password = $password;
     }
@@ -47,7 +47,7 @@ class UserCredentials
         return $this->name;
     }
 
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }

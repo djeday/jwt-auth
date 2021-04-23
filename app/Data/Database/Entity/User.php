@@ -2,7 +2,9 @@
 
 namespace App\Data\Database\Entity;
 
+use App\Core\Exceptions\DataNotFoundException;
 use Doctrine\ORM\Mapping as ORM;
+use DateTimeImmutable;
 
 /**
  * @ORM\Entity
@@ -36,9 +38,15 @@ class User extends AbstractEntity
     protected string $email;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime_immutable", nullable=false)
      */
-    protected string $created;
+    protected DateTimeImmutable $created;
+
+    public function __construct()
+    {
+        $this->setRoleId(4);
+        $this->setCreated(new DateTimeImmutable());
+    }
 
     public function getRoleId(): int
     {
@@ -90,12 +98,12 @@ class User extends AbstractEntity
         $this->email = $email;
     }
 
-    public function getCreated(): string
+    public function getCreated(): DateTimeImmutable
     {
         return $this->created;
     }
 
-    public function setCreated(string $created): void
+    public function setCreated(DateTimeImmutable $created): void
     {
         $this->created = $created;
     }

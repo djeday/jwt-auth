@@ -21,13 +21,17 @@ class Request implements RequestInterface
         return $this->request->getRequestUri();
     }
 
+    public function getMethod(): string {
+        return $this->request->getMethod();
+    }
+
     public function get(string $key): ?string
     {
-        return $this->request->query->get($key);
+        return $this->request->get($key);
     }
 
     public function post(string $key): ?string
     {
-        return $this->request->query->get($key);
+        return $this->request->request->get($key);
     }
 }

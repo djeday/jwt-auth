@@ -2,7 +2,6 @@
 
 namespace App\Core\Routing;
 
-use App\Data\Request\Request;
 use App\Data\Request\RequestFactory;
 
 class RouterFactory

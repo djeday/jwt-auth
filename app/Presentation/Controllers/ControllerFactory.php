@@ -8,6 +8,7 @@ use App\Data\Database\DoctrineManager;
 use App\Data\Repository\UserRepository;
 use App\Data\Request\RequestFactory;
 use App\Data\Response\ResponseFactory;
+use App\Domain\Service\UserService;
 use ReflectionClass;
 use ReflectionException;
 
@@ -48,7 +49,7 @@ class ControllerFactory
             $globalConfiguration->getDbPass()
         );
         $userRepository = new UserRepository($entityManager);
-
-        return new UserController($request, $response, $userRepository);
+        $userService = new UserService($userRepository);
+        return new UserController($request, $response, $userService);
     }
 }
