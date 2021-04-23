@@ -4,7 +4,7 @@ require __DIR__ . '/load-config.php';
 
 use App\Core\Config\ConfigurationFactory;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
-use App\Core\Database\DoctrineManager;
+use App\Data\Database\DoctrineManager;
 
 $configurationRepository = ConfigurationFactory::create();
 $configurations = $configurationRepository->getConfiguration();

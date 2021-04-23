@@ -12,7 +12,7 @@ interface RepositoryInterface
 
     public function getByOne(
         array $conditions = []
-    ): object;
+    ): ?object;
 
     public function getBy(
         array $conditions = [],

@@ -16,7 +16,7 @@ class PasswordValidator extends BaseFieldValidator
         );
         if (!$availableChars) {
             throw new InvalidPasswordException(
-                "Password should contain [a-zA-Z], lowercase, uppercase, numbers and special chars"
+                "Password should contain [a-zA-Z], lowercase, uppercase, numbers and special chars", 400
             );
         }
     }

@@ -28,7 +28,7 @@ abstract class AbstractDoctrineRepository implements RepositoryInterface
 
     public function getByOne(
         array $conditions = []
-    ): object
+    ): ?object
     {
         $repository = $this->entityManager->getRepository($this->getEntityClass());
 

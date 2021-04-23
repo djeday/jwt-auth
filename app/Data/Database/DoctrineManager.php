@@ -35,7 +35,7 @@ class DoctrineManager
     {
         if (empty(self::$entityManager)) {
             $config = Setup::createAnnotationMetadataConfiguration(
-                [dirname(__DIR__) . self::PATH_TO_DB_ENTITIES],
+                [__DIR__ . self::PATH_TO_DB_ENTITIES],
                 self::ANNOTATION_CONFIG['DEV_MODE'],
                 self::ANNOTATION_CONFIG['PROXY_DIR'],
                 self::ANNOTATION_CONFIG['CACHE'],

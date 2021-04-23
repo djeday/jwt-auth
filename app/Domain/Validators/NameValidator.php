@@ -11,10 +11,9 @@ class NameValidator extends BaseFieldValidator
      */
     public function validate(string $value)
     {
-        $numbers = preg_match("/[0-9]/", $value);
-        $specialChars = preg_match("/[!@#$%^&*]/", $value);
-        if ($numbers || $specialChars) {
-            throw new InvalidNameException("Invalid field name");
+        $validChars = preg_match("/^[^!@#$%^&*0-9]{2,128}$/", $value);
+        if (!$validChars) {
+            throw new InvalidNameException("Invalid field name", 400);
         }
     }
 }

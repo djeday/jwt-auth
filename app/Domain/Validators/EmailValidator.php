@@ -12,7 +12,7 @@ class EmailValidator extends BaseFieldValidator
     public function validate($value)
     {
         if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidEmailException("Invalid email format");
+            throw new InvalidEmailException("Invalid email format", 400);
         }
     }
 }
