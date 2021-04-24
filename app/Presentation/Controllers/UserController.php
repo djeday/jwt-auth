@@ -7,7 +7,7 @@ use App\Data\Request\RequestInterface;
 use App\Data\Response\ResponseInterface;
 use App\Domain\Service\UserServiceInterface;
 
-class UserController implements AbstractUserController
+class UserController extends BaseController implements AbstractUserController
 {
     private RequestInterface $request;
 

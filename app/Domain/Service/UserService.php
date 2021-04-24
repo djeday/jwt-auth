@@ -19,10 +19,6 @@ class UserService implements UserServiceInterface
         $this->userRepository = $userRepository;
     }
 
-    /**
-     * @param \App\Data\Request\RequestInterface $request
-     * @throws \App\Core\Exceptions\User\UserException
-     */
     public function createUserFromRequest(RequestInterface $request) {
 
         $userCredentials = new UserCredentials();

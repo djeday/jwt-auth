@@ -16,8 +16,8 @@ class EntityValidator
 
     public function validate(object $entity) {
         foreach ($this->fieldValidatorList as $key => $validator) {
-            $fieldName = 'get' . lcfirst($key);
-            $validator->validate($entity->$fieldName());
+            $mutator = 'get' . lcfirst($key);
+            $validator->validate($entity->$mutator());
         }
     }
 }

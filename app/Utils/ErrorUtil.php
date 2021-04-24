@@ -13,7 +13,7 @@ class ErrorUtil
             include dirname(__DIR__, 2) . '/template/views/errors/debug.php';
         } else {
             $error_code = $exception->getCode() ?? 500;
-            header("HTTP/2 " . $error_code);
+            header("HTTP/2 " . $error_code . $exception->getMessage());
         }
     }
 
