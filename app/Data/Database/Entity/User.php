@@ -2,7 +2,6 @@
 
 namespace App\Data\Database\Entity;
 
-use App\Core\Exceptions\DataNotFoundException;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 

@@ -23,7 +23,7 @@ class ControllerFactory
     public static function create(string $class): AbstractController
     {
         if (!class_exists($class)) {
-            throw new ControllerNotFoundException("Controller $class not found!", 404);
+            throw new ControllerNotFoundException("Controller $class Not Found.", 404);
         }
         $className = (new ReflectionClass($class))->getShortName();
         $controller = 'create' . $className;
