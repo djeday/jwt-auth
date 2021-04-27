@@ -8,4 +8,5 @@ set_exception_handler('App\Utils\ErrorUtil::exceptionHandler');
 
 $router = RouterFactory::create();
 $router->addRoute('/api/user/register', ['POST'], UserController::class, 'signUp');
+$router->addRoute('/api/user/login', ['POST'], UserController::class, 'signIn');
 $router->run();

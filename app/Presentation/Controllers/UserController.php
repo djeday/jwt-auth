@@ -35,6 +35,20 @@ class UserController extends BaseController implements AbstractUserController
 
     public function signIn()
     {
+        $this->response->setHeader('Access-Control-Allow-Origin', '*');
+        $this->response->setHeader('Content-type', 'application/json; charset=utf-8');
+        $this->response->setHeader('Access-Control-Allow-Methods', 'POST');
+        try {
+            $tokenInfo = $this->userService->signIn($this->request);
+
+            $this->jsonResponse(
+                $tokenInfo, 200
+            );
+        } catch (BaseException $exception) {
+            $this->jsonResponse(
+                ['message' => $exception->getMessage()], $exception->getCode()
+            );
+        }
     }
 
     public function signUp()
