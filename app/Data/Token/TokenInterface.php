@@ -6,7 +6,7 @@ interface TokenInterface {
     
     public function generate(int $userId): string;
 
-    public function validate(): bool;
+    public function validate(string $jwt): object;
 
     public function payload();
 }

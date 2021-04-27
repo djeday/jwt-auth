@@ -68,4 +68,22 @@ class UserController extends BaseController implements AbstractUserController
             );
         }
     }
+
+    public function validateToken() {
+        $this->response->setHeader('Access-Control-Allow-Origin', '*');
+        $this->response->setHeader('Content-type', 'application/json; charset=utf-8');
+        $this->response->setHeader('Access-Control-Allow-Methods', 'GET');
+        $this->response->setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+        try {
+            $this->userService->validateToken($this->request);
+
+            $this->jsonResponse(
+                ['message' => 'Token valid.'], 200
+            );
+        } catch (BaseException $exception) {
+            $this->jsonResponse(
+                ['message' => $exception->getMessage()], $exception->getCode()
+            );
+        }
+    }
 }

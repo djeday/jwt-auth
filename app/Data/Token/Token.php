@@ -18,7 +18,7 @@ class Token implements TokenInterface
             "iss" => 'http://localhost:8080',   // издатель токена  
             "iat" => $iat,                      // время, когда был создан токен
             "nbf" => $iat,                      // срок, до которого токен не действителен
-            "exp" => 30 * 60 * 1000             // срок действия токена
+            "exp" => $iat + 30 * 60             // срок действия токена
         ];
     }
 
@@ -31,7 +31,7 @@ class Token implements TokenInterface
         return $this->payload;
     }
 
-    public function validate(): bool {
-        return true;
+    public function validate(string $jwt): object {
+        return JWT::decode($jwt, $this->secretKey, ['HS256']);
     }
 }

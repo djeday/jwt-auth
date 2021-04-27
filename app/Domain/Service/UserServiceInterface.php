@@ -15,4 +15,6 @@ interface UserServiceInterface
     public function createUserFromRequest(RequestInterface $request);
 
     public function signIn(RequestInterface $request): array;
+
+    public function validateToken(RequestInterface $request);
 }
