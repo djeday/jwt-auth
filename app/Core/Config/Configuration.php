@@ -6,6 +6,10 @@ class Configuration
 {
     private string $templateDir;
 
+    private string $appUrl;
+
+    private string $jwtSecret;
+
     private string $dbHost;
 
     private string $dbName;
@@ -62,5 +66,25 @@ class Configuration
     public function setDbPass(string $dbPass): void
     {
         $this->dbPass = $dbPass;
+    }
+
+    public function getAppUrl(): string
+    {
+        return $this->appUrl;
+    }
+
+    public function setAppUrl(string $appUrl)
+    {
+        $this->appUrl = $appUrl;
+    }
+
+    public function getJwtSecret(): string
+    {
+        return $this->jwtSecret;
+    }
+
+    public function setJwtSecret(string $jwtSecret)
+    {
+        $this->jwtSecret = $jwtSecret;
     }
 }

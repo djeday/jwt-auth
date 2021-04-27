@@ -11,6 +11,7 @@ use App\Data\Response\ResponseFactory;
 use App\Domain\Service\UserService;
 use ReflectionClass;
 use ReflectionException;
+use App\Data\Token\Token;
 
 class ControllerFactory
 {
@@ -48,8 +49,10 @@ class ControllerFactory
             $globalConfiguration->getDbUser(),
             $globalConfiguration->getDbPass()
         );
+        $token = new Token($globalConfiguration->getJwtSecret());
+        
         $userRepository = new UserRepository($entityManager);
-        $userService = new UserService($userRepository);
+        $userService = new UserService($userRepository, $token);
         return new UserController($request, $response, $userService);
     }
 }
