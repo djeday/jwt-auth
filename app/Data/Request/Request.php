@@ -34,4 +34,9 @@ class Request implements RequestInterface
     {
         return $this->request->request->get($key);
     }
+
+    public function getHeader(string $key): ?string 
+    {
+        return $this->request->headers->get($key);
+    }
 }
